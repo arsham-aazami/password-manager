@@ -1,20 +1,27 @@
 from tkinter import *
 from tkinter import messagebox
 
+
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
+
 def save_datas():
+
 	website_name = website_entry.get()
 	user_email = email_entry.get()
 	user_password = password_entry.get()
-	is_message_answer_true = messagebox.askyesno(title="pop-up", message="Do you want to save your logged information?")
-	if is_message_answer_true:
-		with open("saved_data.txt", mode="a") as file:
-			file.write(f"{website_name} | {user_email} | {user_password} \n")
-			email_entry.delete(0, END)
-			# user_email.delete(0, END)
-			user_password.delete(0, END)
+
+	if len(website_name) == 0 or len(user_email) == 0 or len(user_password) == 0:
+		messagebox.showinfo(title="alert", message="NO filed should be empty!")
+	else:
+		is_message_answer_true = messagebox.askyesno(title="pop-up", message="Do you want to save your logged information?")
+		if is_message_answer_true:
+			with open("saved_data.txt", mode="a") as file:
+				file.write(f"{website_name} | {user_email} | {user_password} \n")
+				email_entry.delete(0, END)
+				# user_email.delete(0, END)
+				user_password.delete(0, END)
 
 
 # ---------------------------- UI SETUP ------------------------------- #
