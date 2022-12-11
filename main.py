@@ -1,9 +1,48 @@
+import random
+from required_datas import *
 from tkinter import *
 from tkinter import messagebox
-import random
+
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def generat_password():
+		
+	num_of_letters = random.randint(8,10)
+	num_of_numbers = random.randint(2, 4)
+	num_of_symbols = random.randint(2, 4)
+
+	generated_letter = ""
+	generated_numbers = ""
+	generated_symbols = ""
+
+	# defining a function to get random letter, number and symbols
+	def generating_letter_numbers_symbols(num_char, char_set, generated_char):
+		"""Take the number of characters of the specified set of words, numbers, symbols"""
+		for number in range(num_char):
+			random_char = random.choice(char_set)
+			generated_char += random_char
+			
+		return generated_char
+
+
+	l = generating_letter_numbers_symbols(num_of_letters, letters, generated_letter)
+	n = generating_letter_numbers_symbols(num_of_numbers, numbers, generated_numbers)
+	s = generating_letter_numbers_symbols(num_of_symbols, symbols, generated_symbols)
+
+	# total_code = l + n + s
+	# implementing all cases and permutaion for (letters),(numbers) and (symbols)
+	sit1 = l + n + s
+	sit2 = l + s + n
+	sit3 = n + l + s
+	sit4 = n + s + l
+	sit5 = s + l + n
+	sit6 = s + n + l
+
+
+	code_randomization_list = [sit1, sit2, sit3, sit4, sit5, sit6]
+	random_generated_code = random.choice(code_randomization_list)
+	password_entry.insert(0, random_generated_code) 
+
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 
