@@ -1,8 +1,9 @@
 from tkinter import *
 from tkinter import messagebox
-
+import random
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
+def generat_password():
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 
@@ -53,7 +54,7 @@ email_entry.grid(row=2, column=1, columnspan=2)
 email_entry.insert(0, "arsham@gmail.com")
 password_entry = Entry(width=21)
 password_entry.grid(row=3, column=1)
-password_generate_button = Button(text="Generate password")
+password_generate_button = Button(text="Generate password", command=generat_password)
 password_generate_button.grid(row=3, column=2)
 add_button = Button(text="Add", width=36, command=save_datas)
 add_button.grid(row=4, column=1, columnspan=2)
